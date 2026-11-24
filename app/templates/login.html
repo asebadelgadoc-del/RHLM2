@@ -1,0 +1,10 @@
+{% extends "base.html" %}{% block title %}Ingresar | ChallengeMe{% endblock %}
+{% block content %}
+<div class="mx-auto max-w-md rounded-2xl border border-slate-800 bg-slate-900 p-7">
+<h1 class="text-3xl font-black">Bienvenido de vuelta</h1><p class="mt-2 text-sm text-slate-400">Ingresa para continuar con tus desafíos.</p>
+<form method="POST" class="mt-6 space-y-4">
+<input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+<label class="block text-sm">Usuario o correo<input name="identity" required class="mt-1 w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-3"></label>
+<label class="block text-sm">Contraseña<input type="password" name="password" required class="mt-1 w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-3"></label>
+<button class="w-full rounded-lg bg-red-600 py-3 font-bold hover:bg-red-500">Ingresar</button>
+</form></div>{% endblock %}

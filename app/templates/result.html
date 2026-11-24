@@ -1,0 +1,9 @@
+{% extends "base.html" %}{% block title %}Resultado | ChallengeMe{% endblock %}
+{% block content %}
+<div class="mx-auto max-w-2xl rounded-3xl border border-slate-800 bg-slate-900 p-8 text-center">
+<div class="text-5xl">🏆</div><p class="mt-4 text-sm font-bold uppercase tracking-widest text-red-300">Reto completado</p>
+<h1 class="mt-2 text-3xl font-black">¡Buen trabajo!</h1>
+<p class="mt-3 text-slate-400">Este es tu resultado de hoy.</p>
+<div class="my-7 rounded-2xl bg-slate-950 p-6"><div class="text-sm text-slate-400">Puntos obtenidos</div><div class="mt-2 text-5xl font-black text-emerald-400">{{ participation.points }} XP</div><div class="mt-2 text-sm text-slate-500">{{ participation.answers|selectattr('is_correct')|list|length }} respuestas correctas de {{ participation.answers|length }}</div></div>
+<a href="{{ url_for('main.dashboard') }}" class="inline-block rounded-xl bg-red-600 px-6 py-3 font-bold">Volver al inicio</a>
+</div>{% endblock %}
