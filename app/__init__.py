@@ -85,6 +85,7 @@ def seed_demo_data():
         ("Estadísticas", "Si un equipo gana 2 partidos y empata 1, ¿cuántos puntos suma?", ["5", "6", "7", "4"], 0),
     ]
 
+    # hola
     category_map = {c.name: c for c in categories}
     for category_name, prompt, choices, correct_index in demo_questions:
         q = Question(prompt=prompt, category=category_map[category_name])
