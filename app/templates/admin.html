@@ -1,0 +1,11 @@
+{% extends "base.html" %}{% block title %}Administración | ChallengeMe{% endblock %}
+{% block content %}
+<div class="flex flex-wrap items-end justify-between gap-3"><div><p class="text-sm text-red-300">PANEL ADMINISTRADOR</p><h1 class="text-3xl font-black">Banco de preguntas</h1></div><span class="rounded-xl bg-slate-900 px-4 py-3 text-sm">{{ question_count }} preguntas</span></div>
+<div class="mt-6 max-w-2xl rounded-2xl border border-slate-800 bg-slate-900 p-6"><h2 class="text-xl font-bold">Agregar pregunta</h2><p class="mt-1 text-sm text-slate-400">El sistema seleccionará cinco preguntas del banco para el reto diario.</p>
+<form method="POST" class="mt-5 space-y-4"><input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+<label class="block text-sm">Enunciado<input name="prompt" required maxlength="500" class="mt-1 w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-3"></label>
+<label class="block text-sm">Categoría<select name="category_id" required class="mt-1 w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-3">{% for c in categories %}<option value="{{ c.id }}">{{ c.name }}</option>{% endfor %}</select></label>
+{% for i in range(1,5) %}<label class="block text-sm">Alternativa {{ i }}<input name="option_{{ i }}" required class="mt-1 w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-3"></label>{% endfor %}
+<label class="block text-sm">Número de la alternativa correcta<select name="correct" class="mt-1 w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-3">{% for i in range(1,5) %}<option value="{{ i }}">Alternativa {{ i }}</option>{% endfor %}</select></label>
+<button class="w-full rounded-xl bg-red-600 py-3 font-bold hover:bg-red-500">Guardar pregunta</button></form></div>
+{% endblock %}

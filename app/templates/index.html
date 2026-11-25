@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block title %}ChallengeMe | Fútbol chileno{% endblock %}
+{% block content %}
+<section class="grid items-center gap-10 lg:grid-cols-2">
+  <div>
+    <span class="rounded-full border border-red-500/40 bg-red-500/10 px-3 py-1 text-xs font-bold uppercase tracking-widest text-red-300">Primera División · Primera B</span>
+    <h1 class="mt-6 text-5xl font-black leading-tight sm:text-6xl">Demuestra cuánto sabes del <span class="text-red-400">fútbol chileno.</span></h1>
+    <p class="mt-5 max-w-xl text-lg text-slate-400">Resuelve retos diarios de historia, actualidad, clubes y estadísticas. Gana puntos, mantén tu racha y escala en el ranking.</p>
+    <div class="mt-8 flex flex-wrap gap-3">
+      <a href="{{ url_for('main.register') }}" class="rounded-xl bg-red-600 px-6 py-3 font-bold hover:bg-red-500">Comenzar a jugar</a>
+      <a href="{{ url_for('main.login') }}" class="rounded-xl border border-slate-700 px-6 py-3 font-bold hover:bg-slate-900">Ya tengo cuenta</a>
+    </div>
+    <div class="mt-10 grid grid-cols-3 gap-3 text-center">
+      <div class="rounded-xl bg-slate-900 p-4"><div class="text-2xl">🏆</div><div class="mt-1 text-xs text-slate-400">Ranking</div></div>
+      <div class="rounded-xl bg-slate-900 p-4"><div class="text-2xl">🔥</div><div class="mt-1 text-xs text-slate-400">Rachas</div></div>
+      <div class="rounded-xl bg-slate-900 p-4"><div class="text-2xl">⚽</div><div class="mt-1 text-xs text-slate-400">Retos diarios</div></div>
+    </div>
+  </div>
+  <div class="rounded-3xl border border-slate-800 bg-gradient-to-br from-slate-900 to-navy p-8 shadow-2xl">
+    <div class="text-sm font-bold uppercase tracking-widest text-slate-400">El desafío comienza aquí</div>
+    <div class="my-8 flex items-center justify-center gap-5">
+      <div class="flex h-24 w-24 items-center justify-center rounded-2xl bg-white text-5xl">⚽</div>
+      <div class="text-3xl font-black text-red-400">VS</div>
+      <div class="flex h-24 w-24 items-center justify-center rounded-2xl bg-slate-800 text-5xl">🏆</div>
+    </div>
+    <div class="rounded-2xl bg-slate-800/80 p-5">
+      <div class="font-bold">Reto diario</div>
+      <p class="mt-2 text-sm text-slate-400">Cinco preguntas seleccionadas del banco. Cada respuesta correcta suma 100 XP.</p>
+    </div>
+    <p class="mt-5 text-center text-xs text-slate-500">Escudos y camisetas se pueden incorporar en el catálogo de equipos.</p>
+  </div>
+</section>
+{% endblock %}

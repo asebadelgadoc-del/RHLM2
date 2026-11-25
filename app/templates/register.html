@@ -1,0 +1,11 @@
+{% extends "base.html" %}{% block title %}Crear cuenta | ChallengeMe{% endblock %}
+{% block content %}
+<div class="mx-auto max-w-md rounded-2xl border border-slate-800 bg-slate-900 p-7">
+<h1 class="text-3xl font-black">Crear cuenta</h1><p class="mt-2 text-sm text-slate-400">Regístrate para guardar tus puntos y rachas.</p>
+<form method="POST" class="mt-6 space-y-4">
+<input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+<label class="block text-sm">Nombre de usuario<input name="username" minlength="3" required class="mt-1 w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-3"></label>
+<label class="block text-sm">Correo electrónico<input type="email" name="email" required class="mt-1 w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-3"></label>
+<label class="block text-sm">Contraseña (mínimo 8 caracteres)<input type="password" name="password" minlength="8" required class="mt-1 w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-3"></label>
+<button class="w-full rounded-lg bg-red-600 py-3 font-bold hover:bg-red-500">Registrarme</button>
+</form></div>{% endblock %}

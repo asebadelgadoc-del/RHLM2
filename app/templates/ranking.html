@@ -1,0 +1,5 @@
+{% extends "base.html" %}{% block title %}Ranking | ChallengeMe{% endblock %}
+{% block content %}
+<h1 class="text-3xl font-black">🏆 Ranking global</h1><p class="mt-2 text-slate-400">Los jugadores con más puntos acumulados.</p>
+<div class="mt-6 overflow-hidden rounded-2xl border border-slate-800"><table class="w-full text-left text-sm"><thead class="bg-slate-900 text-slate-400"><tr><th class="p-4">Posición</th><th class="p-4">Jugador</th><th class="p-4 text-right">Puntos</th></tr></thead><tbody>{% for user in users %}<tr class="border-t border-slate-800 {{ 'bg-red-950/30' if user.id == current_user.id else 'bg-slate-950' }}"><td class="p-4 font-bold">{{ loop.index }}</td><td class="p-4">{{ user.username }}{% if user.id == current_user.id %} <span class="text-xs text-red-300">(Tú)</span>{% endif %}</td><td class="p-4 text-right font-bold">{{ user.total_points }} XP</td></tr>{% else %}<tr><td colspan="3" class="p-4 text-slate-500">Todavía no hay participantes.</td></tr>{% endfor %}</tbody></table></div>
+{% endblock %}

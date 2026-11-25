@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}ChallengeMe{% endblock %}</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = { theme: { extend: { colors: { navy: "#101c32", pitch: "#173d35" } } } }
+  </script>
+</head>
+<body class="min-h-screen bg-slate-950 text-slate-100">
+  <nav class="border-b border-slate-800 bg-navy">
+    <div class="mx-auto flex max-w-6xl items-center justify-between px-4 py-4">
+      <a href="{{ url_for('main.index') }}" class="text-xl font-black tracking-tight">⚽ Challenge<span class="text-red-400">Me</span></a>
+      <div class="flex items-center gap-3 text-sm">
+        {% if current_user.is_authenticated %}
+          <a class="hover:text-red-300" href="{{ url_for('main.dashboard') }}">Inicio</a>
+          <a class="hover:text-red-300" href="{{ url_for('main.teams') }}">Equipos</a>
+          <a class="hover:text-red-300" href="{{ url_for('main.ranking') }}">Ranking</a>
+          <a class="hover:text-red-300" href="{{ url_for('main.profile') }}">Perfil</a>
+          {% if current_user.is_admin %}<a class="hover:text-red-300" href="{{ url_for('main.admin') }}">Admin</a>{% endif %}
+          <form method="POST" action="{{ url_for('main.logout') }}">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+            <button class="rounded-lg bg-red-600 px-3 py-2 font-semibold hover:bg-red-500">Salir</button>
+          </form>
+        {% else %}
+          <a href="{{ url_for('main.login') }}">Ingresar</a>
+          <a class="rounded-lg bg-red-600 px-3 py-2 font-semibold" href="{{ url_for('main.register') }}">Crear cuenta</a>
+        {% endif %}
+      </div>
+    </div>
+  </nav>
+  <main class="mx-auto max-w-6xl px-4 py-8">
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% for category, message in messages %}
+        <div class="mb-4 rounded-xl border px-4 py-3 {{ 'border-emerald-700 bg-emerald-950 text-emerald-200' if category == 'success' else 'border-red-800 bg-red-950 text-red-200' }}">{{ message }}</div>
+      {% endfor %}
+    {% endwith %}
+    {% block content %}{% endblock %}
+  </main>
+  <footer class="mt-12 border-t border-slate-800 py-6 text-center text-xs text-slate-500">ChallengeMe · Proyecto de demostración sobre fútbol chileno · Datos de ejemplo</footer>
+</body>
+</html>
