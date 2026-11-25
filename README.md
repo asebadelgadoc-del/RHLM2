@@ -69,7 +69,12 @@ Abre http://127.0.0.1:5000
 - Un intento por usuario y fecha.
 - Ranking global.
 - Perfil e historial.
+<<<<<<< HEAD
 - Catálogo inicial de Primera División y Primera B.
+=======
+- Catálogo de clubes 2026: Primera División, Primera B y Segunda División Profesional (16, 16 y 14 equipos respectivamente).
+- Banco ampliado de preguntas de fútbol chileno e internacional, reglas, historia, clubes, jugadores y estadísticas.
+>>>>>>> b7696e9cf457b1c9007706c25e174edf41881ed0
 - Panel administrador para agregar preguntas.
 
 ## Importante
